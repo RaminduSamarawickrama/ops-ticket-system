@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --color-ink: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-100 text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-600;
+  }
+}
+
+@utility card {
+  @apply rounded-lg border border-slate-200 bg-white shadow-sm;
+}
+@utility label {
+  @apply mb-1 block text-sm font-medium text-slate-800;
+}
+@utility input {
+  @apply block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-ink shadow-sm placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 disabled:bg-slate-50;
+}
+@utility input-error {
+  @apply border-red-500 focus:border-red-600 focus:ring-red-600/20;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply btn bg-ink text-white hover:bg-slate-700;
+}
+@utility btn-secondary {
+  @apply btn border border-slate-300 bg-white text-ink hover:bg-slate-50;
+}
+@utility field-error {
+  @apply mt-1 text-sm text-red-700;
+}
