@@ -158,7 +158,10 @@ export async function deliverNotification(
       ...content,
       idempotencyKey: `${n.id}-${n.attempts}`,
     });
-    return result.ok ? finish('SENT', null, result.providerMessageId) : finish('FAILED', result.error.slice(0, 500), null);
+    if (result.ok) return finish('SENT', null, result.providerMessageId);
+    // Written without union narrowing so it also compiles under Vercel's non-strict function build.
+    const reason = 'error' in result ? result.error : 'Unknown email error';
+    return finish('FAILED', reason.slice(0, 500), null);
   } catch (err) {
     console.error(`Notification ${notificationId} could not be processed:`, err);
     await db
