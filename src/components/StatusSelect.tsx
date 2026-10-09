@@ -13,7 +13,7 @@ export function StatusSelect({
   id?: string;
   label: string;
 }) {
-  const info = STATUS_INFO[value];
+  const info = (STATUS_INFO as Record<string, { color: string; textColor: string } | undefined>)[value];
   return (
     <select
       id={id}
@@ -22,7 +22,7 @@ export function StatusSelect({
       disabled={disabled}
       onChange={(e) => onChange(e.target.value as TicketStatus)}
       className="cursor-pointer rounded-full border-0 py-1 pl-3 pr-8 text-xs font-bold disabled:cursor-wait disabled:opacity-70"
-      style={{ backgroundColor: info.color, color: info.textColor }}
+      style={{ backgroundColor: info?.color ?? '#94A3B8', color: info?.textColor ?? '#FFFFFF' }}
     >
       {STATUSES.map((s) => (
         <option key={s} value={s} style={{ backgroundColor: '#fff', color: '#0f172a' }}>

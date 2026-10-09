@@ -25,8 +25,8 @@ export function PriorityBadge({ priority, short = false }: { priority: Priority;
 }
 
 export function StatusBadge({ status }: { status: TicketStatus }) {
-  const s = STATUS_INFO[status];
-  return <Pill label={s.label} bg={s.color} fg={s.textColor} />;
+  const s = (STATUS_INFO as Record<string, { label: string; color: string; textColor: string } | undefined>)[status];
+  return <Pill label={s?.label ?? status} bg={s?.color ?? '#94A3B8'} fg={s?.textColor ?? '#FFFFFF'} />;
 }
 
 const NOTIF_COLORS: Record<NotificationStatus, [string, string]> = {

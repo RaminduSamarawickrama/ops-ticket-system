@@ -17,6 +17,12 @@ const EVENT_LABEL: Record<string, string> = {
   NOTIFICATION_RETRIED: 'Email retry',
 };
 
+/** Safe lookup — returns the label string or the raw status key if unknown (e.g. stale DB value). */
+function statusLabel(s: string | null): string {
+  if (!s) return '';
+  return (STATUS_INFO as Record<string, { label: string } | undefined>)[s]?.label ?? s;
+}
+
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
@@ -236,7 +242,7 @@ export default function TicketDetail() {
                 {e.fromStatus && e.toStatus && (
                   <span className="font-normal text-slate-600">
                     {' '}
-                    {STATUS_INFO[e.fromStatus].label} → {STATUS_INFO[e.toStatus].label}
+                    {statusLabel(e.fromStatus)} → {statusLabel(e.toStatus)}
                   </span>
                 )}
               </p>
