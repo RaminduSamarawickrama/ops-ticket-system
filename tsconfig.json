@@ -1,4 +1,5 @@
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.server.json" }]
+  // Root config is what Vercel uses to compile api/ functions, so it mirrors the strict server
+  // settings. `npm run typecheck` checks the browser app and the server with their own configs.
+  "extends": "./tsconfig.server.json"
 }

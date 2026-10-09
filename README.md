@@ -147,7 +147,7 @@ The first deploy works without a database, but the API answers `503` until step 
 
 You can also create the database at https://neon.tech and paste the **pooled** connection string as `DATABASE_URL`.
 
-Migrations run automatically on every deploy (`npm run vercel-build` runs `scripts/migrate.ts` before building). Migrations only add to the schema and run inside a lock, so this is safe. Preview deployments migrate whichever database their environment points at.
+Migrations run automatically on every deploy (`npm run build:vercel` runs `scripts/migrate.ts` before building). Migrations only add to the schema and run inside a lock, so this is safe. Preview deployments migrate whichever database their environment points at.
 
 ### 4. Screenshots: private Vercel Blob store
 
