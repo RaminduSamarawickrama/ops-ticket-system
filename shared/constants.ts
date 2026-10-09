@@ -30,12 +30,12 @@ export const PRIORITY_INFO: Record<
   },
 };
 
-export const STATUSES = ['OPEN', 'WORKING', 'DONE'] as const;
+export const STATUSES = ['OPEN', 'IN_PROGRESS', 'DONE'] as const;
 export type TicketStatus = (typeof STATUSES)[number];
 
 export const STATUS_INFO: Record<TicketStatus, { label: string; color: string; textColor: string }> = {
   OPEN: { label: 'Open', color: '#DC2626', textColor: '#FFFFFF' },
-  WORKING: { label: 'Working', color: '#EA580C', textColor: '#FFFFFF' },
+  IN_PROGRESS: { label: 'In Progress', color: '#EA580C', textColor: '#FFFFFF' },
   DONE: { label: 'Done', color: '#16A34A', textColor: '#FFFFFF' },
 };
 

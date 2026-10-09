@@ -225,7 +225,7 @@ export async function getSummary(db: Queryable) {
   }>(
     `SELECT count(*) AS total,
             count(*) FILTER (WHERE status = 'OPEN') AS open,
-            count(*) FILTER (WHERE status = 'WORKING') AS working,
+            count(*) FILTER (WHERE status = 'IN_PROGRESS') AS working,
             count(*) FILTER (WHERE status = 'DONE') AS done,
             count(*) FILTER (WHERE priority = 'P1' AND status <> 'DONE') AS open_p1,
             (SELECT count(DISTINCT ticket_id) FROM notifications WHERE status IN ('FAILED', 'SKIPPED')) AS notification_problems

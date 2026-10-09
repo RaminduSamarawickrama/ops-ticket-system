@@ -139,8 +139,8 @@ describe('dashboard and ticket management', () => {
     const t = await createTicket({ subject: 'Payment System Down' });
     ctx.mailer.sent.length = 0;
 
-    const r1 = await (await setStatus(t.id, 'WORKING', cookie)).json();
-    expect(r1).toMatchObject({ changed: true, status: 'WORKING', notification: null });
+    const r1 = await (await setStatus(t.id, 'IN_PROGRESS', cookie)).json();
+    expect(r1).toMatchObject({ changed: true, status: 'IN_PROGRESS', notification: null });
     const r2 = await (await setStatus(t.id, 'DONE', cookie)).json();
     expect(r2.changed).toBe(true);
     expect(r2.notification.status).toBe('SENT');
@@ -162,8 +162,8 @@ describe('dashboard and ticket management', () => {
     );
     expect(history).toEqual([
       'CREATED::OPEN:',
-      `STATUS_CHANGED:OPEN:WORKING:${ADMIN.username}`,
-      `RESOLVED:WORKING:DONE:${ADMIN.username}`,
+      `STATUS_CHANGED:OPEN:IN_PROGRESS:${ADMIN.username}`,
+      `RESOLVED:IN_PROGRESS:DONE:${ADMIN.username}`,
     ]);
   });
 

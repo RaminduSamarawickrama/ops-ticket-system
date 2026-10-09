@@ -34,7 +34,7 @@ CREATE TABLE tickets (
   incident_date     date NOT NULL,
   incident_time     time NOT NULL,
   affected_system   text NOT NULL CHECK (char_length(affected_system) BETWEEN 1 AND 120),
-  status            text NOT NULL DEFAULT 'OPEN' CHECK (status IN ('OPEN', 'WORKING', 'DONE')),
+  status            text NOT NULL DEFAULT 'OPEN' CHECK (status IN ('OPEN', 'IN_PROGRESS', 'DONE')),
   resolution_count  integer NOT NULL DEFAULT 0,  -- how many times the ticket has been marked Done
   created_at        timestamptz NOT NULL DEFAULT now(),
   updated_at        timestamptz NOT NULL DEFAULT now(),

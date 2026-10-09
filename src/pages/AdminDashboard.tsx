@@ -135,7 +135,7 @@ export default function AdminDashboard() {
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5" aria-label="Summary">
         <SummaryCard label="Total tickets" value={summary?.total} to="/admin" />
         <SummaryCard label="Open" value={summary?.open} accent={STATUS_INFO.OPEN.color} to="/admin?status=OPEN" />
-        <SummaryCard label="Working" value={summary?.working} accent={STATUS_INFO.WORKING.color} to="/admin?status=WORKING" />
+        <SummaryCard label="In Progress" value={summary?.working} accent={STATUS_INFO.IN_PROGRESS.color} to="/admin?status=IN_PROGRESS" />
         <SummaryCard label="Done" value={summary?.done} accent={STATUS_INFO.DONE.color} to="/admin?status=DONE" />
         <Link
           to="/admin?priority=P1"
